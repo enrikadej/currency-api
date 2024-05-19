@@ -12,18 +12,14 @@ export class UsersService {
   ) {}
 
   async create(body: CreateUserDto): Promise<User> {
-    console.log(body, 'body');
     const user = await this.usersRepository.create(body);
-    await console.log({ user });
     const savedUser = await this.usersRepository.save(user);
 
     return savedUser;
   }
 
   async findAll(): Promise<User[]> {
-    console.log('find all method');
     const users = await this.usersRepository.find();
-    console.log({ users });
 
     return users;
   }

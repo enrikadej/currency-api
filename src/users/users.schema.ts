@@ -14,12 +14,4 @@ export class User {
   @ApiProperty({ example: 'true', description: 'is user subscribed' })
   @Column({ default: false })
   isSubscribed: boolean;
-
-  @ApiProperty({ example: 'true', description: 'is user subscribed' })
-  @Column({ default: false })
-  isSubscribe2d: boolean;
-
-  @ApiProperty({ example: 'true', description: 'is user subscribed' })
-  @Column({ default: false })
-  isSubscribe23d: boolean;
 }
