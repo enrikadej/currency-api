@@ -1,9 +1,8 @@
 import { Body, Controller, Post, Get } from '@nestjs/common';
 import { SubscriptionService } from './subscription.service';
 import { Subscription } from './subscription.schema';
-import { SubscribeEmailDto } from './dto/subscription.dto';
+import { SubscriptionEmailDto as EmailSubscriptionDto } from './dto/subscription.dto';
 import { ApiHeader, ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { FormDataRequest } from 'nestjs-form-data';
 
 @ApiHeader({
   name: 'subscription',
@@ -36,8 +35,7 @@ export class SubscribeController {
     description: 'Повертати, якщо e-mail вже є в базі даних',
   })
   @Post('/subscription')
-  @FormDataRequest()
-  createSubcription(@Body() body: SubscribeEmailDto) {
+  createSubscription(@Body() body: EmailSubscriptionDto) {
     return this.subscriptionService.create(body);
   }
 }

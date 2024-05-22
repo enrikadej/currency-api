@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Subscription } from './subscription.schema';
-import { SubscribeEmailDto } from './dto/subscription.dto';
+import { SubscriptionEmailDto } from './dto/subscription.dto';
 
 @Injectable()
 export class SubscriptionService {
@@ -11,7 +11,7 @@ export class SubscriptionService {
     private subscriptionsRepository: Repository<Subscription>,
   ) {}
 
-  async create(body: SubscribeEmailDto): Promise<Subscription> {
+  async create(body: SubscriptionEmailDto): Promise<Subscription> {
     const subscription = await this.subscriptionsRepository.create(body);
     const savedSubscription =
       await this.subscriptionsRepository.save(subscription);
