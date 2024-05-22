@@ -1,7 +1,7 @@
 import { Body, Controller, Post, Get } from '@nestjs/common';
-import { UsersService } from './users.service';
-import { User } from './users.schema';
-import { CreateUserDto } from './dto/users.dto';
+import { SubscriptionService } from './subscription.service';
+import { Subscription } from './subscription.schema';
+import { SubscribeEmailDto } from './dto/subscription.dto';
 import { ApiHeader, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { FormDataRequest } from 'nestjs-form-data';
 
@@ -10,14 +10,14 @@ import { FormDataRequest } from 'nestjs-form-data';
   description: 'Робота з підпискою',
 })
 @Controller('/subscribe')
-export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+export class SubscribeController {
+  constructor(private readonly subscriptionService: SubscriptionService) {}
 
-  @ApiOperation({ summary: 'Get all users' })
-  @ApiResponse({ status: 200, type: [User] })
+  @ApiOperation({ summary: 'Get all subscriptions' })
+  @ApiResponse({ status: 200, type: [Subscription] })
   @Get()
-  getAllUser() {
-    return this.usersService.findAll();
+  getAllSubscriptions() {
+    return this.subscriptionService.findAll();
   }
 
   @ApiOperation({
@@ -37,14 +37,7 @@ export class UsersController {
   })
   @Post('/subscription')
   @FormDataRequest()
-  createUser(@Body() body: CreateUserDto) {
-    return this.usersService.create(body);
-  }
-
-  @ApiOperation({ summary: 'Get user by id' })
-  @ApiResponse({ status: 200, type: User })
-  @Get('/:id')
-  getUser(id: string): Promise<User> {
-    return this.usersService.findOne(id);
+  createSubcription(@Body() body: SubscribeEmailDto) {
+    return this.subscriptionService.create(body);
   }
 }

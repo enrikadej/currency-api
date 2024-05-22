@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { User } from './users/users.schema';
+import { Subscription } from './subscription/subscription.schema';
 import { config } from 'dotenv';
 
 config();
@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
   host: 'localhost',
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
-  entities: [User],
+  entities: [Subscription],
   // should be false for Production
   // synchronize: true,
   logging: true,

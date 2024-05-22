@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CurrencyRateModule } from './currency-rate/currency-rate.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/users.schema';
-import { UsersModule } from './users/users.module';
+import { Subscription } from './subscription/subscription.schema';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
@@ -17,12 +16,10 @@ import { ConfigModule } from '@nestjs/config';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      entities: [User],
-      // should be false for Production
-      // synchronize: true,
+      entities: [Subscription],
       autoLoadEntities: true,
     }),
-    UsersModule,
+    Subscription,
     CurrencyRateModule,
   ],
 })
