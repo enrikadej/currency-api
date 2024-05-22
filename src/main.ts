@@ -22,6 +22,8 @@ class Application {
 
   private async setupNestApp() {
     this.app = await NestFactory.create(AppModule);
+    this.app.setGlobalPrefix('api');
+
     console.log('Nest aplication was created.');
   }
 

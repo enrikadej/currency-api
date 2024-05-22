@@ -1,13 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsBoolean, IsEmail } from 'class-validator';
+import { IsString, IsEmail } from 'class-validator';
 
 export class CreateUserDto {
-  @ApiProperty({ example: 'user@gmail.com', description: 'email' })
+  @ApiProperty({
+    example: 'user@gmail.com',
+    description: 'Електронна адреса, яку потрібно підписати',
+  })
   @IsString()
   @IsEmail({}, { message: 'Email address is not correct' })
   email: string;
-
-  @ApiProperty({ example: 'true', description: 'is user subscribed' })
-  @IsBoolean()
-  isSubscribed: boolean;
 }

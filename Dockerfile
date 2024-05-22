@@ -9,7 +9,6 @@ COPY package-lock.json .
 COPY tsconfig.json .
 COPY tsconfig.build.json .
 COPY nest-cli.json .
-# COPY ormconfig.js .
 
 # Install all Packages
 RUN npm install
@@ -17,7 +16,7 @@ RUN npm install
 # Copy all other source code to work directory
 COPY . .
 COPY ./dist ./dist
-# COPY migration /app/migration
+COPY migration /app/migration
 
 # Start
 CMD ["npm" "run" "start:dev"]
